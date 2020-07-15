@@ -11,8 +11,8 @@
     "agm"
   ],
   "peerDependencies": {
-    "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0",
-    "@agm/core": "^1.0.0-beta.7",
+    "@angular/core": "^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0",
+    "@agm/core": "^1.1.0",
     "js-marker-clusterer": "^1.0.0"
   },
   "ngPackage": {
