@@ -1,0 +1,30 @@
+import * as tslib_1 from "tslib";
+import { AgmMap } from '@agm/core';
+import { Directive, Host, Input } from '@angular/core';
+import { first } from 'rxjs/operators';
+let AgmDrawingManagerTrigger = class AgmDrawingManagerTrigger {
+    constructor(_agmMap) {
+        this._agmMap = _agmMap;
+    }
+    ngAfterViewInit() {
+        this._agmMap.mapReady.pipe(first()).subscribe(map => this.drawingManager.setMap(map));
+    }
+    ngOnDestroy() {
+        this._agmMap.mapReady.pipe(first()).subscribe(() => this.drawingManager.setMap(null));
+    }
+};
+AgmDrawingManagerTrigger.ctorParameters = () => [
+    { type: AgmMap, decorators: [{ type: Host }] }
+];
+tslib_1.__decorate([
+    Input('agmDrawingManager')
+], AgmDrawingManagerTrigger.prototype, "drawingManager", void 0);
+AgmDrawingManagerTrigger = tslib_1.__decorate([
+    Directive({
+        selector: 'agm-map[agmDrawingManager]',
+        exportAs: 'matDrawingManagerTrigger',
+    }),
+    tslib_1.__param(0, Host())
+], AgmDrawingManagerTrigger);
+export { AgmDrawingManagerTrigger };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZHJhd2luZy1tYW5hZ2VyLXRyaWdnZXIuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AYWdtL2RyYXdpbmcvIiwic291cmNlcyI6WyJkaXJlY3RpdmVzL2RyYXdpbmctbWFuYWdlci10cmlnZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQSxPQUFPLEVBQUUsTUFBTSxFQUFFLE1BQU0sV0FBVyxDQUFDO0FBQ25DLE9BQU8sRUFBaUIsU0FBUyxFQUFFLElBQUksRUFBRSxLQUFLLEVBQWEsTUFBTSxlQUFlLENBQUM7QUFDakYsT0FBTyxFQUFFLEtBQUssRUFBRSxNQUFNLGdCQUFnQixDQUFDO0FBT3ZDLElBQWEsd0JBQXdCLEdBQXJDLE1BQWEsd0JBQXdCO0lBTW5DLFlBQTRCLE9BQWU7UUFBZixZQUFPLEdBQVAsT0FBTyxDQUFRO0lBQzNDLENBQUM7SUFFRCxlQUFlO1FBQ2IsSUFBSSxDQUFDLE9BQU8sQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLEtBQUssRUFBRSxDQUFDLENBQUMsU0FBUyxDQUFDLEdBQUcsQ0FBQyxFQUFFLENBQUMsSUFBSSxDQUFDLGNBQWMsQ0FBQyxNQUFNLENBQUMsR0FBRyxDQUFDLENBQUMsQ0FBQztJQUN4RixDQUFDO0lBRUQsV0FBVztRQUNULElBQUksQ0FBQyxPQUFPLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyxLQUFLLEVBQUUsQ0FBQyxDQUFDLFNBQVMsQ0FBQyxHQUFHLEVBQUUsQ0FBQyxJQUFJLENBQUMsY0FBYyxDQUFDLE1BQU0sQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDO0lBQ3hGLENBQUM7Q0FDRixDQUFBOztZQVZzQyxNQUFNLHVCQUE5QixJQUFJOztBQUZXO0lBQTNCLEtBQUssQ0FBQyxtQkFBbUIsQ0FBQztnRUFBbUM7QUFKbkQsd0JBQXdCO0lBSnBDLFNBQVMsQ0FBQztRQUNULFFBQVEsRUFBRSw0QkFBNEI7UUFDdEMsUUFBUSxFQUFFLDBCQUEwQjtLQUNyQyxDQUFDO0lBT2EsbUJBQUEsSUFBSSxFQUFFLENBQUE7R0FOUix3QkFBd0IsQ0FnQnBDO1NBaEJZLHdCQUF3QiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEFnbU1hcCB9IGZyb20gJ0BhZ20vY29yZSc7XHJcbmltcG9ydCB7IEFmdGVyVmlld0luaXQsIERpcmVjdGl2ZSwgSG9zdCwgSW5wdXQsIE9uRGVzdHJveSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xyXG5pbXBvcnQgeyBmaXJzdCB9IGZyb20gJ3J4anMvb3BlcmF0b3JzJztcclxuaW1wb3J0IHsgQWdtRHJhd2luZ01hbmFnZXIgfSBmcm9tICcuL2RyYXdpbmctbWFuYWdlcic7XHJcblxyXG5ARGlyZWN0aXZlKHtcclxuICBzZWxlY3RvcjogJ2FnbS1tYXBbYWdtRHJhd2luZ01hbmFnZXJdJyxcclxuICBleHBvcnRBczogJ21hdERyYXdpbmdNYW5hZ2VyVHJpZ2dlcicsXHJcbn0pXHJcbmV4cG9ydCBjbGFzcyBBZ21EcmF3aW5nTWFuYWdlclRyaWdnZXIgaW1wbGVtZW50cyBBZnRlclZpZXdJbml0LCBPbkRlc3Ryb3l7XHJcblxyXG4gIC8qKiBUaGUgZHJhd2luZyBtYW5hZ2VyIHRvIGJlIGF0dGFjaGVkIHRvIHRoaXMgdHJpZ2dlci4gKi9cclxuICAvLyB0c2xpbnQ6ZGlzYWJsZS1uZXh0LWxpbmU6IG5vLWlucHV0LXJlbmFtZVxyXG4gIEBJbnB1dCgnYWdtRHJhd2luZ01hbmFnZXInKSBkcmF3aW5nTWFuYWdlcjogQWdtRHJhd2luZ01hbmFnZXI7XHJcblxyXG4gIGNvbnN0cnVjdG9yKEBIb3N0KCkgcHJpdmF0ZSBfYWdtTWFwOiBBZ21NYXApIHtcclxuICB9XHJcblxyXG4gIG5nQWZ0ZXJWaWV3SW5pdCgpOiB2b2lkIHtcclxuICAgIHRoaXMuX2FnbU1hcC5tYXBSZWFkeS5waXBlKGZpcnN0KCkpLnN1YnNjcmliZShtYXAgPT4gdGhpcy5kcmF3aW5nTWFuYWdlci5zZXRNYXAobWFwKSk7XHJcbiAgfVxyXG5cclxuICBuZ09uRGVzdHJveSgpIHtcclxuICAgIHRoaXMuX2FnbU1hcC5tYXBSZWFkeS5waXBlKGZpcnN0KCkpLnN1YnNjcmliZSgoKSA9PiB0aGlzLmRyYXdpbmdNYW5hZ2VyLnNldE1hcChudWxsKSk7XHJcbiAgfVxyXG59XHJcbiJdfQ==
